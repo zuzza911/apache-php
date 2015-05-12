@@ -1,5 +1,6 @@
 tutum-docker-php
 ================
+[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
 
 Base docker image to run PHP applications on Apache
 
@@ -29,7 +30,7 @@ Hello world!
 Loading your custom PHP application
 -----------------------------------
 
-This image can be used as a base image for your PHP application. Create a new `Dockerfile` in your 
+This image can be used as a base image for your PHP application. Create a new `Dockerfile` in your
 PHP application folder with the following contents:
 
     FROM tutum/apache-php
@@ -62,4 +63,3 @@ Create a Dockerfile like the following:
 
 - Replacing `git` with any dependencies that your composer packages might need.
 - Add your php application to `/app`
-

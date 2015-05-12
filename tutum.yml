@@ -1,0 +1,4 @@
+php:
+  image: tutum/apache-php
+  ports:
+   - "80:80"
