@@ -24,6 +24,7 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
 RUN wget https://wordpress.org/latest.zip && mv latest.zip /var/www/latest.zip
 RUN cd /var/www/ && unzip latest.zip && rm latest.zip
 RUN mv -v /var/www/wordpress/* /var/www/html && chown -R www-data:www-data /var/www/html
+RUN rm /var/www/html/index.html
 
 ENV ALLOW_OVERRIDE **False**
 
