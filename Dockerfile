@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Fernando Mayo <fernando@tutum.co>
+
 
 # Install base packages
 RUN apt-get update && \
@@ -12,12 +12,17 @@ RUN apt-get update && \
         php5-gd \
         php5-curl \
         php-pear \
+        wget \
         php-apc && \
     rm -rf /var/lib/apt/lists/* && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN /usr/sbin/php5enmod mcrypt
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
     sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
+    
+RUN wget https://wordpress.org/latest.zip && mv latest.zip /var/www/latest.zip
+RUN cd /var/www/ && unzip latest.zip && rm latest.zip
+RUN mv -v /var/www/wordpress/* /var/www/html && chown -R www-data:www-data /var/www/html
 
 ENV ALLOW_OVERRIDE **False**
 
